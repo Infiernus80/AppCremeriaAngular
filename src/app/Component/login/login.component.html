@@ -1,0 +1,37 @@
+<!-- <app-splash-screen></app-splash-screen> -->
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-6">col-6</div>
+    <div class="col-6">col-6</div>
+  </div>
+</div> -->
+<form class="form-signin">
+  <div class="text-center mb-4">
+    <img class="mb-4" src="../assets/img/LogoCreme.png" alt="" width="160" height="160">
+    <h1 class="h3 mb-3 font-italic">Bienvenido</h1>
+  </div>
+
+  <div class="form-label-group">
+    <input type="email" name="inputEmail" class="form-control" [(ngModel)]="usuario.correo" placeholder="Email address"
+      required autofocus>
+    <label for="inputEmail">Correo electronico</label>
+  </div>
+
+  <div class="form-label-group">
+    <input type="password" name="inputPassword" class="form-control" [(ngModel)]="usuario.contrasenia" placeholder="Password"
+      required>
+    <label for="inputPassword">Contraseña</label>
+  </div>
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> ¿Recordar cuenta?
+    </label>
+  </div>
+  <button class="btn btn-lg active btn-primary btn-block" (click)="login()">Iniciar Sesion</button>
+  <p class="mt-5 mb-3 text-muted text-center">&copy; DEVYOU</p>
+  <br>
+  <br>
+  <br>
+
+</form>

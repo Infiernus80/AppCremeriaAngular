@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+body{  
+background-image: linear-gradient(to left top, #f9e79f, #ffe1c1, #ffe7e9, #fff4ff, #ffffff);
+background-position: center;
+background-size: cover;
+height: 100vh;
+}
+
+
+
+.body-expanded{
+    margin-left: 300px;
+}
