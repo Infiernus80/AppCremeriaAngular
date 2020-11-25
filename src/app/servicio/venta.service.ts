@@ -12,8 +12,8 @@ export class VentaService {
   consultarTodo(){
     return this.http.get(this.urlVenta);
   }
-  regPedido(pedido){
-    return this.http.post<any>(this.urlVenta, pedido)
+  regVenta(venta){
+    return this.http.post<any>(this.urlVenta, venta)
   }
   //agrega un producto a la venta 
   agregarProducto(venta){
@@ -25,7 +25,7 @@ export class VentaService {
     return this.http.post<any>(this.urlVenta + '/eliminar-producto', venta);
   }
 
-  eliminarPedido(venta){
+  eliminarVenta(venta){
     return this.http.post<any>(this.urlVenta + '/eliminar', venta);
   }
 
@@ -39,6 +39,14 @@ export class VentaService {
     return this.http.post<any>(this.urlVenta + '/buscar-producto-venta', pedido);
   }
 
+  //modificar cantidad y monto de un producto
+  modificarProducto(filtros){
+    return this.http.put<any>(this.urlVenta + '/modificar-prod', filtros)
+  }
+  //Finalizar venta
+  finalizarVenta(datos){
+    return this.http.put<any>(this.urlVenta + '/finalizarventa',datos)
+  }
 
 
 }

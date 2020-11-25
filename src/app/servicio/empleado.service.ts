@@ -12,14 +12,6 @@ export class EmpleadoService {
   consultarEmpCorreo( correo ){
     return this.http.post<any>(this.urlEmp + "/buscar-emp-correo", correo);
   }
-
-  consultarTodoEmp(){
-    return this.http.get(this.urlEmp);
-  }
-
-  modificarContraEmp(empleado){
-    return this.http.put<any>(this.urlEmp + "/modificar-contrasenia", empleado);
-  }
    
 }
 

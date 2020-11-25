@@ -13,12 +13,8 @@ export class ProductoService {
   consultaCodigo(codigo) {
     return this.http.post<any>(this.urlProductos + '/buscar-prod-codigo', codigo)
   }
-  buscarCodigo(producto) {
-    return this.http.post<any>(this.urlProductos + "/buscar-prod-codigo", producto);
-  }
-  //consulta todo sin necesidad de async
-  buscarTodoSA(nada) {
-    return this.http.post<any>(this.urlProductos + '/buscar-todo', nada);
+  buscarTodo(nada){
+    return this.http.post<any>(this.urlProductos + '/productos-venta',nada)
   }
 
 

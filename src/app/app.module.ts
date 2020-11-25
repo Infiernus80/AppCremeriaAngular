@@ -21,7 +21,7 @@ import {ProductoService} from './servicio/producto.service';
 //Escaner
 import { BarecodeScannerLivestreamModule } from "ngx-barcode-scanner";
 import { ShoppingCartItemComponent } from './Component/shopping-cart-item/shopping-cart-item.component';
-import { ProductosComponent } from './Component/productos/productos.component';
+
 
 
 @NgModule({
@@ -33,7 +33,6 @@ import { ProductosComponent } from './Component/productos/productos.component';
     SidebarComponent,
     PerfilComponent,
     ShoppingCartItemComponent,
-    ProductosComponent
   ],
   imports: [
     BrowserModule,
