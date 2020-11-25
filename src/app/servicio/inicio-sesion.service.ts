@@ -30,4 +30,6 @@ export class InicioSesionService {
     this.change1.emit(localStorage.getItem('tipo'));
     return localStorage.getItem('tipo');
   }
+  
+  
 }

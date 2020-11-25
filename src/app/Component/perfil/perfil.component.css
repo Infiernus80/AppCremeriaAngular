@@ -1,0 +1,10 @@
+.letra {
+    font-size: 7rem;
+    text-align: center;
+    font-family: 'Fredoka One', cursive;
+    color: white;
+}
+
+.circulo {
+    background-color: blue;
+}

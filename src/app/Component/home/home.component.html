@@ -1,22 +1,15 @@
+<!-- Contenedor inicial -->
 <div class="container">
     <h1 class="text-sm-center text-md-center">Productos</h1>
 
     <div class="row">
-        <h4 class="col-6 col-md-4">Código de barras</h4>
-    </div>
-    <div class="row">
-        <div class="col-8"><input type="number" class="form-control"></div>
-        <button class="btn btn-warning"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search"
-                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
-                <path fill-rule="evenodd"
-                    d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
-            </svg></button>
+        <div id="interactive" class="viewport">
+            <!-- QuaggaJS will populate this element -->
+          </div>
     </div>
     <hr>
     <div class="table-responsive-md">
-        <table class="table">
+        <!-- <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Código</th>
@@ -61,15 +54,50 @@
                             </svg></button></td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
+        <div class="shopping-cart">
+            <div class="container mt-4">
+                <div class="row" *ngIf='productosInfo.length > 0 && productosInfo[0].idProductoCarrito != ""; else noHay'>
+                    <div class="col-8">
+                        <p>Productos</p>
+                        <div class="row animated fadeIn" *ngFor='let p of productosInfo; let i = index'>
+                            <!-- <div class="col-4">
+                                <img src="{{p?.img}}" style="width: 100%; height: 300px;">
+                            </div> -->
+                            <div class="col-8">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4 class="font-weight-light">{{p?.nombreProd}}</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p><b>Precio: </b> {{p?.precio}} pesos</p>
+                                        <p><b>Cantidad a comprar: </b> {{p?.cantidadProd}}</p>
+                                        <input type="number" [(ngModel)]="p.cantidadProd">
+                                        <p><b>Monto: </b>{{p?.monto}} pesos</p>
+                                        <!-- <button class="btn btn-info form-control mb-2" (click)="modificarCantidadProducto(p.idProductoCarrito, p.cantidadProd, p.codigo, p.precio)">Modificar cantidad a comprar</button> -->
+                                        <button class="form-control btn btn-danger" (click)="quitarProducto(p.idProductoCarrito); recargarPagina();">Quitar producto</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <h5>Total: {{total}}</h5>
+                    </div>
+                </div>
+            
+                <ng-template #noHay>
+                    <h3 class="font-weight-light text-center">No hay productos agregados</h3>
+                </ng-template>
+            </div>
     </div>
     <br>
     <div class="table-responsive-md">
         <table class="table">
             <tbody>
-                <th>Total:</th>
-                <th>Pago:</th>
-                <th>Cambio:</th>
+                <th>Pago:<input type="text"class="form-control"> </th>
             </tbody>
         </table>
     </div>
@@ -79,20 +107,4 @@
     <div class="d-flex justify-content-end">
         <button type="button" class="btn btn-danger btn-lg btn-block">Cancelar</button>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>

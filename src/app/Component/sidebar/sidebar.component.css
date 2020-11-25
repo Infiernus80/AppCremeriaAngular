@@ -136,6 +136,9 @@ body{
 .menu-expanded #profile #name{
     width: 100%;
 }
+.menu-expanded #profile #puesto{
+    width: 100%;
+}
 
 .menu-collapsed{
     width: 50px;
@@ -149,6 +152,18 @@ body{
 .menu-collapsed #profile #name{
     display: none;
 }
+.menu-collapsed #profile #puesto{
+    display: none;
+}
 .menu-collapsed .item{
     width: 100px;
+}
+.letra {
+    font-size: 3rem;
+    text-align: center;
+    font-family: 'Fredoka One', cursive;
+    color: white;
+    background-color: #17a2b8!important;
+    border-radius: 2rem;
+    
 }

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PaginaInicialGuard } from './pagina-inicial.guard';
+import { CerrarSesionGuard } from './cerrar-sesion.guard';
 
-describe('PaginaInicialGuard', () => {
-  let guard: PaginaInicialGuard;
+describe('CerrarSesionGuard', () => {
+  let guard: CerrarSesionGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(PaginaInicialGuard);
+    guard = TestBed.inject(CerrarSesionGuard);
   });
 
   it('should be created', () => {

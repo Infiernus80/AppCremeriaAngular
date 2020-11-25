@@ -6,13 +6,13 @@ import {LoginGuard} from './guardians/login.guard'
 //componetes
 import { LoginComponent } from './Component/login/login.component';
 import { HomeComponent } from './Component/home/home.component';
-import { SplashScreenComponent } from './Component/splash-screen/splash-screen.component';
-import { from } from 'rxjs';
+import { PerfilComponent } from './Component/perfil/perfil.component';
 
 const routes: Routes = [
   // {path:'',component:SplashScreenComponent},
   {path:'InicioSesion',component:LoginComponent},
-  {path:'Home',component:HomeComponent},
+  {path:'Home',component:HomeComponent,canActivate:[LoginGuard]},
+  {path:'Perfil',component:PerfilComponent,canActivate:[LoginGuard]},
   //Principal
   {path:'',redirectTo:'InicioSesion',pathMatch:'full'},
   {path:'**',redirectTo:'InicioSesion',pathMatch:'full'},

@@ -1,0 +1,33 @@
+<div class="container-fluid py-3">
+    <div class="row mx-2">
+        <div class="col-sm-12  bg-info">
+            <p class="letra ">{{ letra }}</p>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <p class="h5">{{empleado.nombre}} {{empleado.apellidos}}</p>
+            <p>
+                <img src="../assets/img/phone-inicio.png" alt="teléfono"> {{empleado.telefono}}
+            </p>
+            <p>
+                <img src="../assets/img/sueldo-inicio.png" alt="Sueldo"> {{empleado.sueldo}}
+            </p>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <p class="h5">.</p>
+            <p>
+                <img src="../assets/img/correo-inicio.png" alt="teléfono"> {{empleado.correo}}
+            </p>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <p class="h5">.</p>
+            <p>
+                <img src="../assets/img/tipoUsu-inicio.png" alt="teléfono"> {{empleado.tipo}}
+            </p>
+            <p>
+                <img src="../assets/img/fechaNac-inicio.png" alt="Sueldo"> {{fechaNacimiento[0]}}
+            </p>
+        </div>
+        <div class="col-sm-12 col-md-1 col-lg-1">
+            <button class="btn btn-secondary"><img src="./assets/img/config.png" alt=""></button>
+        </div>
+    </div>

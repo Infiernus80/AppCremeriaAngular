@@ -17,9 +17,10 @@ export class LoginGuard implements CanActivate {
 
   canActivate(): boolean{
     if (this.loginService.loginExito()) {
+      
         return true;
     }else{
-      this.rutas.navigate(['/Home']);
+      this.rutas.navigate(['/InicioSesion']);
       return false;
     }
   }

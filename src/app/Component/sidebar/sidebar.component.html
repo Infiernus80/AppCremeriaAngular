@@ -10,13 +10,14 @@
     </div>
     <!-- Profile -->
     <div id="profile">
-        <div id="photo"><img src="../assets/img/perfil.jpg" alt=""></div>
-        <div id="name"><span id="Nombre"></span></div>
+        <div id="photo"><p class="letra">{{ letra }}</p></div>
+        <div id="name"><span>{{empleado.nombre}} {{empleado.apellidos}}</span></div>
+        <div id="puesto"><span>{{empleado.tipo}}</span></div>
     </div>
     <!-- ITEMS -->
     <div id="menu-items">
         <div class="item">
-            <a href="">
+            <a routerLink="Home">
                 <div class="icon"><img src="../assets/img/carrito-de-compras.png" alt=""></div>
                 <div class="title"><span>Punto de venta</span></div>
             </a>
@@ -30,17 +31,22 @@
         </div>
         <div class="item separator"></div>
         <div class="item">
-            <a href="#">
+            <a routerLink="Perfil">
                 <div class="icon"><img src="../assets/img/perfil.png" alt=""></div>
                 <div class="title"><span>Perfil</span></div>
             </a>
         </div>
         <div class="item separator"></div>
         <div class="item">
-            <a href="#">
+            <a (click)="logout()">
                 <div class="icon"><img src="../assets/img/salida.png" alt=""></div>
                 <div class="title"><span>Cerrar sesión</span></div>
             </a>
         </div>
+        <div class="item separator"></div>
+        <div id="profile">
+            <div id="photo"><img src="../assets/img/LogoCreme.png" alt=""></div>
+        </div>
     </div>
+    
 </div>
