@@ -20,7 +20,7 @@ import {ProductoService} from './servicio/producto.service';
 
 //Escaner
 import { BarecodeScannerLivestreamModule } from "ngx-barcode-scanner";
-import { ShoppingCartItemComponent } from './Component/shopping-cart-item/shopping-cart-item.component';
+
 
 
 
@@ -32,7 +32,6 @@ import { ShoppingCartItemComponent } from './Component/shopping-cart-item/shoppi
     HomeComponent,
     SidebarComponent,
     PerfilComponent,
-    ShoppingCartItemComponent,
   ],
   imports: [
     BrowserModule,

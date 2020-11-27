@@ -12,6 +12,16 @@ export class EmpleadoService {
   consultarEmpCorreo( correo ){
     return this.http.post<any>(this.urlEmp + "/buscar-emp-correo", correo);
   }
-   
+  modificarContraEmp(empleado){
+    return this.http.put<any>(this.urlEmp + "/modificar-contrasenia", empleado);
+  }
+  modificarPerfilEmp(empleado){
+    return this.http.put<any>(this.urlEmp + "/modificar-perfil", empleado);
+  }
+
+  buscarEmpId(empleado){
+    return this.http.post<any>(this.urlEmp + "/buscar-emp-id", empleado);
+  }
+
 }
 

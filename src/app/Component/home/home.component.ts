@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BeepService } from './beep.service';
 import Quagga from 'quagga';
-import { Productos } from './articulo';
-import { ShoppingCart } from './shopping-cart';
+import Swal from 'sweetalert2';
 
 //Servicio
 import { ProductoService } from 'src/app/servicio/producto.service';
@@ -29,6 +28,7 @@ export class HomeComponent implements OnInit {
 
   venta;
   total = 0;
+  cambioVen;
 
   ventaSchema = {
     total: 0,
@@ -126,10 +126,9 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    // this.shoppingCart.addArticle(this.producto)
     this.lastScannedCode = code;
     this.lastScannedCodeDate = now;
-    // this.changeDetectorRef.detectChanges();
+    
 
     this.consultarVenta();
     if (this.venta) {
@@ -218,7 +217,20 @@ export class HomeComponent implements OnInit {
   }
 
   recargarPagina() {
-    location.reload();
+    Swal.fire({
+      title: 'Venta realizada correctamente',
+      icon: 'success',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Seguir vendiendo'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        location.reload();
+      }
+    })
+  }
+  recargarPaginaCanel(){
+   
   }
 
   regVenta() {
@@ -252,7 +264,6 @@ export class HomeComponent implements OnInit {
       
     }
   }
-
   modificarCantidadProducto(codigoProd,cantidad,idTiene, precio){
     this.filtrosModificarProd._id = idTiene;
     this.filtrosModificarProd.codigoProd = codigoProd;
@@ -267,6 +278,7 @@ export class HomeComponent implements OnInit {
   finalizarVenta(){
     this.filtrosVenta.correoEmp = localStorage.getItem('correo');
     this.filtrosVenta.total = this.total;
+    
     this.ventaSer.finalizarVenta(this.filtrosVenta).subscribe(res => {
       this.consultarVenta();
     },
@@ -275,9 +287,27 @@ export class HomeComponent implements OnInit {
 
   eliminarVenta(){
     this.consultarVenta();
-
-    this.ventaSer.eliminarVenta(this.venta).subscribe(res => {
-      this.consultarVenta();
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, cancelar venta'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title:'¡Venta cancelada!',
+          icon: 'success',
+        })
+        location.reload();
+        
+      }
+      this.ventaSer.eliminarVenta(this.venta).subscribe(res => {
+        this.consultarVenta();
+    })
+    
     },
     err => console.log(err));
   }

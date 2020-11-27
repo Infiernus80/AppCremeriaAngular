@@ -12,7 +12,7 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Código</th>
+                        <th scope="col">Producto</th>
                         <th scope="col">Descripción</th>
                         <th scope="col">Precio</th>
                         <th scope="col">Cantidad</th>
@@ -26,14 +26,17 @@
                         <ng-template #todo>
                             <th scope="row">{{i}}</th>
                             <td>{{prod.nombreProd}}</td>
-                            <td>${{prod.precioProd}}</td>
-                            <td> <input type="number" name="n" [(ngModel)]="prod.cantidadProd" (change)="modificarCantidadProducto(prod.codigoProd, prod.cantidadProd, prod._id, prod.precioProd)"> </td>
-                            <td>{{prod.monto}}</td>
-                            <td><button class="btn btn-danger" (click)="quitarProducto(venta._id, prod._id)"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                                class="bi bi-cart-x-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z" />
-                            </svg></button></td>
+                            <td>${{prod.precioProd}} MXN</td>
+                            <td> <input class="form-control" type="number" name="n" [(ngModel)]="prod.cantidadProd"
+                                    (change)="modificarCantidadProducto(prod.codigoProd, prod.cantidadProd, prod._id, prod.precioProd)">
+                            </td>
+                            <td>${{prod.monto}} MXN</td>
+                            <td><button class="btn btn-danger" (click)="quitarProducto(venta._id, prod._id)"><svg
+                                        width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-x-fill"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z" />
+                                    </svg></button></td>
                         </ng-template>
                     </tr>
 
@@ -42,17 +45,18 @@
         </div>
 
     </div>
-    <p>Total: {{total}} pesos</p>
-    A pagar
-    <div class="input-group-prepend"><span class="input-group-text">$</span></div>
+    <h4 class="total">Total:$ <span class="badge badge-pill badge-success">{{total}} MXN</span></h4>
+    <!-- <h4 class="total">Recibe:$ <input id="cambioVen" type="number" required> MXN</h4> -->
     <div class="row">
         <div class="col-12" *ngIf="venta; else otros">
-            <input type="button" value="Pagar" class="btn-outline-info form-control" (click)="finalizarVenta();  recargarPagina()">
-            <button class="btn btn-outline-danger btn-block" (click)="eliminarVenta(); recargarPagina()">Cancelar</button>
+            <input type="button" value="Pagar" class="btn btn-info btn-lg btn-block"
+                (click)="finalizarVenta();  recargarPagina()">
+            <button class="btn btn-danger btn-lg btn-block" (click)="eliminarVenta()">Cancelar</button>
         </div>
         <ng-template #otros>
-            <input type="button" value="Pagar" class="btn-outline-info form-control" disabled (click)="finalizarVenta();  recargarPagina()">
-            <button class="btn btn-outline-danger btn-block" disabled>Cancelar</button>
+            <input type="button" value="Pagar" class="btn-outline-info form-control" disabled
+                (click)="finalizarVenta();  recargarPaginaCanel()">
+            <button class="btn btn-danger btn-lg btn-block" disabled>Cancelar</button>
         </ng-template>
 
     </div>

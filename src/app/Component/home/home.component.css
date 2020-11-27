@@ -48,3 +48,6 @@
 .table-wrapper-scroll-y {
     display: block;
 }
+.total{
+    text-align: right;
+}

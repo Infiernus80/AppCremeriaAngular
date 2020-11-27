@@ -17,17 +17,121 @@
             <p>
                 <img src="../assets/img/correo-inicio.png" alt="teléfono"> {{empleado.correo}}
             </p>
+            <p>
+                <img src="../assets/img/fechaNac-inicio.png" alt="Sueldo"> {{empleado.fechaNac}}
+            </p>
         </div>
         <div class="col-sm-12 col-md-4">
             <p class="h5">.</p>
             <p>
                 <img src="../assets/img/tipoUsu-inicio.png" alt="teléfono"> {{empleado.tipo}}
             </p>
-            <p>
-                <img src="../assets/img/fechaNac-inicio.png" alt="Sueldo"> {{fechaNacimiento[0]}}
-            </p>
-        </div>
-        <div class="col-sm-12 col-md-1 col-lg-1">
-            <button class="btn btn-secondary"><img src="./assets/img/config.png" alt=""></button>
+            
         </div>
     </div>
+    <div class="col-sm-12">
+        <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modalConfig" (click)="infoModificar()">Cambiar contraseña</button>
+    </div>
+    <br>
+    <img class="rounded mx-auto d-block" src="../assets/img/configuraciones.png" alt="">
+
+    <!-- Modal para configuraciones de perfil -->
+<div class="modal fade" id="modalConfig" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header c-amarillo">
+                <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Configurar perfil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="exito == 1">
+                    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                        Tu Información se actualizo <strong>correctamente!</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="reiniciarExito()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="exito == 2">
+                    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                        <strong>¡Error! </strong>Tu Información no se actualizo
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="reiniciarExito()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary form-control mt-2" (click)="modificarP()">
+                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z"/>
+                      </svg>
+                    Modificar perfil
+                </button>
+
+                <div *ngIf="modificarPerfil">
+                    <h5 class="font-weight-light mt-2">Información personal</h5>
+                    <hr>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <p class="mb-0">Nombre</p>
+                            <input type="text"  class="form-control" [(ngModel)]="empleadoM.nombre">
+                        </div>
+                        <div class="col-6">
+                            <p class="mb-0">Apellidos</p>
+                            <input type="text"  class="form-control" [(ngModel)]="empleadoM.apellidos">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <p class="mb-0">Teléfono</p>
+                            <input type="text" class="form-control" [(ngModel)]="empleadoM.telefono">
+                        </div>
+                        <div class="col-6">
+                            <p class="mb-0">Fecha de nacimiento</p>
+                            <input type="date"  class="form-control" [(ngModel)]="empleadoM.fechaNac">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <p class="mb-0">Correo</p>
+                            <input type="email"  class="form-control" [(ngModel)]="empleadoM.correo">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary form-control mt-2" (click)="modificarC()">
+                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-key-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                      </svg>
+                    Cambiar contraseña                
+                </button>
+                <div *ngIf="modificarContra">
+                    <div *ngIf="exitoContra == 3">
+                        <div class="alert alert-danger alert-dismissible fade show text-center mt-2" role="alert">
+                            las contraseñas NO son <strong>iguales</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="reiniciarExito()">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <input type="password" class="form-control" placeholder="Ingresa tu nueva contraseña" [(ngModel)]="contasenias.contrasenia">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <input type="password" class="form-control" placeholder="Ingresa de nuevo la contraseña" [(ngModel)]="contasenias.contrasenia2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="modificarPerfilEmp()">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
