@@ -27,8 +27,7 @@
                             <th scope="row">{{i}}</th>
                             <td>{{prod.nombreProd}}</td>
                             <td>${{prod.precioProd}} MXN</td>
-                            <td> <input class="form-control" type="number" name="n" [(ngModel)]="prod.cantidadProd"
-                                    (change)="modificarCantidadProducto(prod.codigoProd, prod.cantidadProd, prod._id, prod.precioProd)">
+                            <td> <input class="form-control" type="number" name="n" [(ngModel)]="prod.cantidadProd" (change)="modificarCantidadProducto(prod.codigoProd, prod.cantidadProd, prod._id, prod.precioProd)">
                             </td>
                             <td>${{prod.monto}} MXN</td>
                             <td><button class="btn btn-danger" (click)="quitarProducto(venta._id, prod._id)"><svg
@@ -49,14 +48,36 @@
     <!-- <h4 class="total">Recibe:$ <input id="cambioVen" type="number" required> MXN</h4> -->
     <div class="row">
         <div class="col-12" *ngIf="venta; else otros">
-            <input type="button" value="Pagar" class="btn btn-info btn-lg btn-block"
-                (click)="finalizarVenta();  recargarPagina()">
+            <input type="button" value="Pagar" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#modalCambio">
             <button class="btn btn-danger btn-lg btn-block" (click)="eliminarVenta()">Cancelar</button>
         </div>
         <ng-template #otros>
-            <input type="button" value="Pagar" class="btn-outline-info form-control" disabled
-                (click)="finalizarVenta();  recargarPaginaCanel()">
+            <input type="button" value="Pagar" class="btn-outline-info form-control" disabled (click)="finalizarVenta();">
             <button class="btn btn-danger btn-lg btn-block" disabled>Cancelar</button>
         </ng-template>
 
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalCambio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cambio</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ingrese cantidad de dinero recibida</p>
+                    <input type="text" class="form-control" [(ngModel)]="cantidadIngresada" (keyup)="obtenerCambio()">
+                    <p id="Cambio">Su cambio es: {{cambio}}</p>
+                    <p>{{mensajeCambio}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="finalizarVenta();">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>

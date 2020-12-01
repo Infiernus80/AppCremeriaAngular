@@ -16,6 +16,13 @@ export class ProductoService {
   buscarTodo(nada){
     return this.http.post<any>(this.urlProductos + '/productos-venta',nada)
   }
+  modificarExistencia(producto){
+    return this.http.put<any>(this.urlProductos + '/modificar-existencia',producto)
+  }
+
+  consultarCodigoProd(codigo){
+    return this.http.post<any>(this.urlProductos + '/buscar-prod-codigoProd', codigo)
+  }
 
 
 }
