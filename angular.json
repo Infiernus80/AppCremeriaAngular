@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AppCremeria"
+    }
+  },
+  "defaultProject": "AppCremeria",
+  "cli": {
+    "analytics": false
+  }
 }

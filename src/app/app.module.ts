@@ -12,11 +12,13 @@ import { HomeComponent } from './Component/home/home.component';
 import { SplashScreenComponent } from './Component/splash-screen/splash-screen.component';
 import { SidebarComponent } from './Component/sidebar/sidebar.component';
 import { PerfilComponent } from './Component/perfil/perfil.component';
+import { ControlesComponent } from './Component/controles/controles.component';
 
 //Servicios
 import { InicioSesionService } from './servicio/inicio-sesion.service';
 import { EmpleadoService } from './servicio/empleado.service';
 import {ProductoService} from './servicio/producto.service';
+import {ArduinoService} from './servicio/arduino.service'
 
 //Escaner
 import { BarecodeScannerLivestreamModule } from "ngx-barcode-scanner";
@@ -32,6 +34,7 @@ import { BarecodeScannerLivestreamModule } from "ngx-barcode-scanner";
     HomeComponent,
     SidebarComponent,
     PerfilComponent,
+    ControlesComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { BarecodeScannerLivestreamModule } from "ngx-barcode-scanner";
   providers: [
     InicioSesionService,
     EmpleadoService,
-    ProductoService
+    ProductoService,
+    ArduinoService
   ],
   bootstrap: [AppComponent]
 })
