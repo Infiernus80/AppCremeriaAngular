@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpleadoService } from 'src/app/servicio/empleado.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -35,7 +36,8 @@ export class PerfilComponent implements OnInit {
  
  contasenias = {
    contrasenia: "",
-   contrasenia2: ""
+   contrasenia2: "",
+   correo:""
  }
  
  
@@ -45,7 +47,7 @@ export class PerfilComponent implements OnInit {
  exito = 0;
  exitoContra = 0;
  
-   constructor(private empleadoService : EmpleadoService) { }
+   constructor(private empleadoService : EmpleadoService, private rutas:Router) { }
  
    ngOnInit(): void {
      this.miInfo();
@@ -86,9 +88,11 @@ export class PerfilComponent implements OnInit {
      }
  
      if (this.modificarContra) {
-       if(this.contasenias.contrasenia === this.contasenias.contrasenia2){ 
+       this.contasenias.correo =localStorage.getItem('correo');   
+        if(this.contasenias.contrasenia === this.contasenias.contrasenia2){ 
          this.empleadoService.modificarContraEmp(this.contasenias).subscribe(res=>{
            this.exito = 1;
+           this.cerrarSesion();
          },
          err => {
            this.exito = 2;
@@ -118,4 +122,13 @@ export class PerfilComponent implements OnInit {
      else
        this.modificarContra = true;
    }
+   cerrarSesion(){
+    //elimina las variables del localStorage
+    localStorage.removeItem('token');
+    localStorage.removeItem('nombre');
+    localStorage.removeItem('tipo');
+    localStorage.removeItem('correo')
+    this.rutas.navigate(['/InicioSesion']);
+    location.reload();
+  }
  }
