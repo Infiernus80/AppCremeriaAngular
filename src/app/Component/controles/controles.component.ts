@@ -10,9 +10,9 @@ export class ControlesComponent implements OnChanges {
   temperaturas;
 
   temperatura={
-    estado:"",
+    estado:0,
     fecha:"",
-    temp:""
+    temp:0
   }
 
 
@@ -23,14 +23,24 @@ export class ControlesComponent implements OnChanges {
     
   }
   vertempe(){
+    let TemperaturaEsta = 0;
     
     this.tempSer.verTemperatura().subscribe(res=>{
       this.temperaturas= res
       console.log(this.temperaturas);
-      // this.temperatura.temp = res.temperatura
+      this.temperatura.temp = res
+      if (this.temperaturas <= 26) {
+        this.temperatura.estado = 0;
+      }
+      else
+      this.temperatura.estado = 1;
+
     },err=>{
       console.log(err);
     })
+  }
+  registrarTemp(){
+    
   }
 
 }

@@ -14,4 +14,5 @@ verTemperatura(){
   return this.http.get<any>(this.urlControl+"/vertemperatura")
 }
 
+
 }

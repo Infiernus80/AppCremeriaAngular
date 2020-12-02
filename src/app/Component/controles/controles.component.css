@@ -1,0 +1,50 @@
+.enlaceboton {    font-family: verdana, arial, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    padding: 4px;
+    background-color: #17a2b8;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    border-radius: .25rem;
+ }
+ .enlaceboton:link,
+ .enlaceboton:visited {
+    border-top: 1px solid #cccccc;
+    border-bottom: 2px solid #666666;
+    border-left: 1px solid #cccccc;
+    border-right: 2px solid #666666;
+ }
+ .enlaceboton:hover {
+     border-bottom: 1px solid #cccccc;
+    border-top: 2px solid #666666;
+    border-right: 1px solid #cccccc;
+    border-left: 2px solid #666666;
+ }
+ .enlaceboton1 {    font-family: verdana, arial, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    padding: 4px;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    border-radius: .25rem;
+ }
+ .enlaceboton1:link,
+ .enlaceboton1:visited {
+    border-top: 1px solid #cccccc;
+    border-bottom: 2px solid #666666;
+    border-left: 1px solid #cccccc;
+    border-right: 2px solid #666666;
+ }
+ .enlaceboton1:hover {
+     border-bottom: 1px solid #cccccc;
+    border-top: 2px solid #666666;
+    border-right: 1px solid #cccccc;
+    border-left: 2px solid #666666;
+ }
