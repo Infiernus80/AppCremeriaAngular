@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { ArduinoService } from 'src/app/servicio/arduino.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-controles',
@@ -41,8 +41,14 @@ export class ControlesComponent implements OnInit {
       console.log(this.temperaturas);
       this.temperatura.temp = res
 
+     
     
       if(this.temperatura.temp > 60 && !this.unaVez){
+        Swal.fire({
+          icon: 'warning',
+          title: 'Peligro',
+          text: 'La temperatura a subido drasticamente',
+        })
           this.registrarTemp();
           this.unaVez = true
       }
